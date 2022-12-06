@@ -1,1 +1,3 @@
-# aoc2022_java
+# aoc2022
+
+https://adventofcode.com/2022
