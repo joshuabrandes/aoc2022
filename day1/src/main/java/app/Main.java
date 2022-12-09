@@ -20,6 +20,7 @@ public class Main {
         System.out.println("Total dwarves: " + caloriesList.size());
         System.out.println("Highest calories count: " + maximum.getRight() + " (Index: " + maximum.getLeft() + ")");
 
+
         // extra task (calories of top three elves)
         var caloriesListCopy = caloriesList;
         var sortedList = caloriesListCopy.stream()
@@ -51,36 +52,6 @@ public class Main {
         //check whether all is correct
         topThreeList.stream()
                 .forEachOrdered(System.out::println);
-
-        /*
-        var caloriesListCopy = caloriesList;
-        var maximumCopy = maximum;
-
-        var topThreeList = new ArrayList<Pair<Integer, Integer>>(3);
-
-        topThreeList.add(maximumCopy);
-        caloriesListCopy.remove(maximumCopy.getLeft());
-
-        while (topThreeList.size() < 3) {
-            var tmpMax = getMaximumAndIndex(caloriesListCopy);
-            topThreeList.add(tmpMax);
-            caloriesListCopy.remove(tmpMax.getLeft());
-        }
-
-        var totalTopThreeCalories = 0;
-        for (Pair<Integer, Integer> pair : topThreeList) {
-            totalTopThreeCalories += pair.getRight();
-        }
-        System.out.println("\nCalories of the top three elves: " + totalTopThreeCalories);
-        System.out.println("Indexes: "
-                + topThreeList.get(0).getLeft() + ", "
-                + topThreeList.get(1).getLeft() + ", "
-                + topThreeList.get(1).getLeft() + ", ");
-
-        //check whether all is correct
-        topThreeList.stream()
-                .forEachOrdered(element -> pairToString(element));
-         */
     }
 
     static List<String> readFile(String filePath) {
