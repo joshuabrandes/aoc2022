@@ -19,6 +19,68 @@ public class Main {
 
         System.out.println("Total dwarves: " + caloriesList.size());
         System.out.println("Highest calories count: " + maximum.getRight() + " (Index: " + maximum.getLeft() + ")");
+
+        // extra task (calories of top three elves)
+        var caloriesListCopy = caloriesList;
+        var sortedList = caloriesListCopy.stream()
+                .sorted()
+                .toList();
+
+        var firstElementIsBiggest = true;
+        int first = sortedList.get(0);
+        int last = sortedList.get(sortedList.size() - 1);
+
+        if (first < last) {
+            firstElementIsBiggest = false;
+        }
+        System.out.println(firstElementIsBiggest);
+
+        var topThreeList = new ArrayList<Integer>(3);
+        var maxIndex = sortedList.size() - 1;
+        for (int i = 0; i < 3; i++) {
+            topThreeList.add(sortedList.get(maxIndex - i));
+        }
+
+        var totalCaloriesTopThree = 0;
+        for (int i = 0; i < topThreeList.size(); i++) {
+            totalCaloriesTopThree += topThreeList.get(i);
+        }
+
+        System.out.println("\nCalories of the top three elves: " + totalCaloriesTopThree);
+
+        //check whether all is correct
+        topThreeList.stream()
+                .forEachOrdered(System.out::println);
+
+        /*
+        var caloriesListCopy = caloriesList;
+        var maximumCopy = maximum;
+
+        var topThreeList = new ArrayList<Pair<Integer, Integer>>(3);
+
+        topThreeList.add(maximumCopy);
+        caloriesListCopy.remove(maximumCopy.getLeft());
+
+        while (topThreeList.size() < 3) {
+            var tmpMax = getMaximumAndIndex(caloriesListCopy);
+            topThreeList.add(tmpMax);
+            caloriesListCopy.remove(tmpMax.getLeft());
+        }
+
+        var totalTopThreeCalories = 0;
+        for (Pair<Integer, Integer> pair : topThreeList) {
+            totalTopThreeCalories += pair.getRight();
+        }
+        System.out.println("\nCalories of the top three elves: " + totalTopThreeCalories);
+        System.out.println("Indexes: "
+                + topThreeList.get(0).getLeft() + ", "
+                + topThreeList.get(1).getLeft() + ", "
+                + topThreeList.get(1).getLeft() + ", ");
+
+        //check whether all is correct
+        topThreeList.stream()
+                .forEachOrdered(element -> pairToString(element));
+         */
     }
 
     static List<String> readFile(String filePath) {
@@ -80,5 +142,15 @@ public class Main {
         }
 
         return Pair.of(maxIndex, maxValue);
+    }
+
+    static void pairToString(Pair<Integer, Integer> input) {
+        System.out.println(
+                "Pair : \t Left (index): " + input.getLeft()
+                        + "\t\t Right (calories): " + input.getRight());
+    }
+
+    static Integer getCaloriesFromPair(Pair<Integer, Integer> input) {
+        return input.getRight();
     }
 }
