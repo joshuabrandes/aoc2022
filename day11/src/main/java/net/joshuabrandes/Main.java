@@ -48,6 +48,10 @@ public class Main {
             }
 
             element.setItems(itemsToAdd);
+            /*
+            element.setNumberOfInspections(
+                    element.getNumberOfInspections() + itemsToAdd.size());
+             */
             itemsToAdd.clear();
         }
     }
