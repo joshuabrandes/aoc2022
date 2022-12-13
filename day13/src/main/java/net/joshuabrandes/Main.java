@@ -1,5 +1,7 @@
 package net.joshuabrandes;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +9,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         // Create a scanner to read input from the user
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File("src/main/resources/input.txt"));
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found at location: " +
+                    ex.getMessage() +
+                    "\n\n");
+            ex.printStackTrace();
+        }
+
+        if (scanner == null) {
+            return;
+        }
 
         // Read in the pairs of packets
         List<String[]> pairs = new ArrayList<>();
@@ -47,4 +61,8 @@ public class Main {
             if (leftValue.startsWith("[")) {
 
             }
-
+        }
+        // TODO!!!!
+        return true;
+    }
+}
